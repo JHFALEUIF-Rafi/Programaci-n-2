@@ -4,58 +4,70 @@ public class Sistema {
 
     Scanner sc;
 
-    public Sistema() {
+    public Sistema(){
         sc = new Scanner(System.in);
     }
 
-    public Vehiculo crearVehiculo() {
-        System.out.println("###INGRESE LOS DATOS DEL VEHICULO###");
-        System.out.println("Marca: ");
-        String marca = sc.nextLine();
-        System.out.println("Modelo: ");
-        String modelo = sc.nextLine();
-        System.out.println("Placa: ");
-        String placa = sc.nextLine();
-        System.out.println("Numero de ruedas: ");
-        int numeroRuedas = sc.nextInt();
-        System.out.println("Cilindraje: ");
+    public Vehiculo crearVehiculo(){
+        System.out.println("Ingrese los datos del vehículo:");
+        System.out.print("Marca: ");
+        String marca = sc.next();
+        System.out.print("Modelo: ");
+        String modelo = sc.next();
+        System.out.print("Placa: ");
+        String placa = sc.next();
+        System.out.print("Numero de ruedas: ");
+        int numRuedas = sc.nextInt();
+        System.out.print("Cilindraje: ");
         double cilindraje = sc.nextDouble();
-        System.out.println("Combustible: 1.Gasolina / 2.Diesel");
-        int combustible = sc.nextInt();
-        sc.nextLine(); // Limpiar el buffer
-        Duenio duenio = crearDuenio();
-        Vehiculo vehiculo = new Vehiculo(marca, modelo, placa, numeroRuedas, cilindraje, combustible, duenio);
+        System.out.print("Torque: ");
+        double torque = sc.nextDouble();
+        System.out.print("Combustible 1.Gasolina/2.Diesel : ");
+        int tipoCombustible = sc.nextInt();
+        Duenio duenio = this.crearDuenio();
+        Vehiculo vehiculo = new Vehiculo(marca,modelo,placa,numRuedas,
+                                          cilindraje,torque,tipoCombustible,duenio);
         return vehiculo;
     }
 
-    public Duenio crearDuenio() {
-        System.out.println("###INGRESE LOS DATOS DEL DUENIO###");
-        System.out.println("Nombre: ");
-        String nombre = sc.nextLine();
-        System.out.println("Cedula: ");
+
+    public Duenio crearDuenio(){
+        System.out.println("Ingrese los datos del Dueño:");
+        System.out.print("Nombre: ");
+        String nombre = sc.next();
+        System.out.print("Cédula: ");
         int cedula = sc.nextInt();
-        System.out.println("Telefono:");
+        System.out.print("Teléfono: ");
         String telefono = sc.next();
-        Duenio duenio = new Duenio(nombre, telefono, cedula);
+        Duenio duenio = new Duenio(nombre,telefono,cedula);
         return duenio;
     }
 
-    public void imprimirDuenio(Duenio duenio) {
-        System.out.println("DATOS DEL DUENIO");
+
+    public void imprimirDuenio(Duenio duenio){
+        System.out.println("Datos del Dueño:");
         System.out.println("Nombre: " + duenio.getNombre());
-        System.out.println("Cedula: " + duenio.getCedula());
-        System.out.println("Telefono: " + duenio.getTelefono());
+        System.out.println("Cédula: " + duenio.getCedula());
+        System.out.println("Teléfono: " + duenio.getTelefono());
     }
 
-    public void imprimirVehiculo(Vehiculo vehiculo) {
-        System.out.println("DATOS DEL VEHICULO");
+    public void imprimirVehiculo(Vehiculo vehiculo){
+        System.out.println("Información Vehículo:");
         System.out.println("Marca: " + vehiculo.getMarca());
         System.out.println("Modelo: " + vehiculo.getModelo());
-        System.out.println("Placa: " + vehiculo.getPlaca());
-        System.out.println("Numero de ruedas: " + vehiculo.getNumeroRuedas());
+        System.out.println("Placa: " + vehiculo.getMarca());
+        System.out.println("Numero Ruedas: " + vehiculo.getNumRuedas());
         System.out.println("Cilindraje: " + vehiculo.getCilindraje());
-        System.out.println("Combustible: " + vehiculo.getCombustible());
-        System.out.println("\n--- DUEÑO DEL VEHICULO ---");
-        imprimirDuenio(vehiculo.getDuenio());
+        System.out.println("Torque: " + vehiculo.getTorque());
+        System.out.println("Combustible: " + (vehiculo.getTipoCombustible()==1 ? "Gasolina" : "Diesel"));
+        this.imprimirDuenio(vehiculo.getDuenio());
     }
+
+    public void imprimirAceleracion(Vehiculo vehiculo){
+        double accV = vehiculo.aceleracion();
+        System.out.println("La aceleración del vehículo es: " + accV);
+    }
+
+
+
 }

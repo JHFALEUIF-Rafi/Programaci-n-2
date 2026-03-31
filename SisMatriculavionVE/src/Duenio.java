@@ -1,7 +1,9 @@
 public class Duenio {
+
     private String nombre;
     private String telefono;
     private int cedula;
+
 
     public Duenio(String nombre, String telefono, int cedula) {
         this.nombre = nombre;
@@ -9,7 +11,12 @@ public class Duenio {
         this.cedula = cedula;
     }
 
-    public String getNombre() {
+    public Duenio(Duenio duenio){
+        this.nombre = duenio.nombre;
+        this.cedula = duenio.cedula;
+    }
+
+   public String getNombre() {
         return nombre;
     }
 
