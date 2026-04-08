@@ -42,7 +42,7 @@ public class Vehiculo {
     }
 
 
-    double aceleracion(){
+    public double aceleracion(){
         double acc;
         if(tipoCombustible==1){
             acc = cilindraje * torque * 2;
@@ -50,6 +50,22 @@ public class Vehiculo {
             acc = cilindraje * torque;
         }
         return acc;
+    }
+
+    public double aceleracion(int tipoCombustible, float cilindraje){
+        double acc;
+        if(tipoCombustible==1){
+            acc = Math.pow(cilindraje,2);
+        }else{
+            acc = Math.sqrt(cilindraje);
+        }
+        return acc;
+    }
+
+
+    @Override
+    public String toString(){
+        return "El vehículo tiene las placas: " + this.placa;
     }
 
     public String getMarca() {
