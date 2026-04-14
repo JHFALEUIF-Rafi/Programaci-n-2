@@ -52,8 +52,8 @@ public class Factura {
         return "Numero de pieza: " + numero + "\n"
                 + "Descripcion: " + descripcion + "\n"
                 + "Cantidad: " + cantidad + "\n"
-                + String.format("Precio por articulo: $", precio)
-                + String.format("Monto de factura: $", obtenerMontoFactura());
+                + String.format("Precio por articulo: %.2f%n", precio)
+                + String.format("Monto de factura: %.2f", obtenerMontoFactura());
     }
 
 }
